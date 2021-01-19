@@ -1,34 +1,45 @@
-<template lang="pug">
-    div.section
-        div.container
-            h2.title Portfolio
-            div(v-if="items.length === 0")
-                div.content
-                    p 
-                        | You have no shares right now. Buy some on the 
-                        router-link(to="/stocks") market.
-            div(v-else)
-                div.columns
-                    div.column.is-half(v-for="asset in items")
-                        asset(
-                            :name="asset.name", 
-                            :quantity="asset.quantity", 
-                            :price="asset.price", 
-                            action="SELL"
-                            :onAction="sell"
-                        )
+<template>
+  <div class="section">
+    <div class="container">
+      <h2 class="title">Portfolio</h2>
+      <div v-if="items.length === 0">
+        <div class="content">
+          <p>
+            You have no shares right now. Buy some on the<router-link
+              to="/stocks"
+            >
+              market.</router-link
+            >
+          </p>
+        </div>
+      </div>
+      <div v-else>
+        <div class="columns is-multiline">
+          <div class="column is-half" v-for="asset in items" :key="asset">
+            <asset
+              :name="asset.name"
+              :quantity="asset.quantity"
+              :price="asset.price"
+              action="SELL"
+              :onAction="sell"
+            ></asset>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapGetters, mapActions } from "vuex";
 
-import Asset from '../../../components/Asset';
+import Asset from "../../../components/Asset";
 
 export default {
-    computed: mapGetters('portfolio', ['items']),
-    methods: mapActions('stock', ['sell']),
-    components: {
-        Asset
-    }
+  computed: mapGetters("portfolio", ["items"]),
+  methods: mapActions("stock", ["sell"]),
+  components: {
+    Asset,
+  },
 };
 </script>
