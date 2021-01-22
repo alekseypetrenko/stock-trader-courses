@@ -15,9 +15,10 @@ export default {
       commit('endgame');
     }
   },
-  endday: ({ commit }) => {
+  endday: ({ state, commit, dispatch, rootState }) => {
     commit('endday');
     commit('stock/endday', null, { root: true });
+    dispatch('history/addNewPrice', null, { root: true });
   },
   invokeHelpModal: ({ commit }) => commit('invokeHelpModal'),
   revokeHelpModal: ({ commit }) => commit('revokeHelpModal')

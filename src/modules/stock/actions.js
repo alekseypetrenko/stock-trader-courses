@@ -1,5 +1,8 @@
 export default {
-  generateData: ({ commit }) => commit('generate'),
+  generateData: ({ commit, dispatch }) => {
+    commit('generate');
+    dispatch('history/addNewPrice', null, { root: true });
+  },
   buy: ({ commit, dispatch, getters }, { name, quantity }) => {
     const payload = {
       ...getters.getByName(name),
@@ -18,4 +21,5 @@ export default {
     dispatch('app/sell', payload, { root: true });
     commit('portfolio/sell', payload, { root: true });
   }
+  
 };

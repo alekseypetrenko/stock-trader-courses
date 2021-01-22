@@ -3,7 +3,11 @@
     <div class="container">
       <h2 class="title">Stocks</h2>
       <div class="columns is-multiline">
-        <div class="column is-half" v-for="asset in items" :key="asset">
+        <div
+          class="column is-half"
+          v-for="asset in items"
+          :key="asset + Math.random()"
+        >
           <asset
             :name="asset.name"
             :price="asset.price"

@@ -5,6 +5,7 @@ import app from './modules/app';
 import portfolio from './modules/portfolio';
 import stock from './modules/stock';
 import persistence from './modules/persistence';
+import history from './modules/history';
 
 Vue.use(Vuex);
 
@@ -13,6 +14,7 @@ export default new Vuex.Store({
     app,
     portfolio,
     stock,
-    persistence
+    persistence,
+    history
   }
 });
